@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waleed_asro_shopping_getx_api/view/screens/welcome_screen.dart';
+import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WelcomeScreen(),
+      initialRoute: AppRoutes.welcome,
+      getPages: AppRoutes.routes,
     );
   }
 }

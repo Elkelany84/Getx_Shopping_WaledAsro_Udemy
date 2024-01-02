@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/view/screens/auth/login_screen.dart';
+import 'package:waleed_asro_shopping_getx_api/view/screens/auth/signup_screen.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/welcome_screen.dart';
 
 class AppRoutes {
@@ -11,9 +13,19 @@ class AppRoutes {
       name: Routes.welcomeScreen,
       page: () => WelcomeScreen(),
     ),
+    GetPage(
+      name: Routes.loginScreen,
+      page: () => LoginScreen(),
+    ),
+    GetPage(
+      name: Routes.signupScreen,
+      page: () => SignUpScreen(),
+    ),
   ];
 }
 
 class Routes {
   static const welcomeScreen = "/welcomeScreen";
+  static const loginScreen = "/loginScreen";
+  static const signupScreen = "/signupScreen";
 }

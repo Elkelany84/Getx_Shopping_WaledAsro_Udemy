@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
@@ -88,7 +90,12 @@ class WelcomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Get.to(LoginScreen());
+                      // Get.toNamed(Routes
+                      //     .loginScreen); //Show back button in login screen
+                      Get.offNamed(Routes.loginScreen);
+                    },
                     child: TextUtils(
                       text: "Get Start",
                       fontSize: 22,
@@ -111,7 +118,9 @@ class WelcomeScreen extends StatelessWidget {
                         underLine: TextDecoration.none,
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.offNamed(Routes.signupScreen);
+                          },
                           child: TextUtils(
                             text: "SignUp",
                             fontWeight: FontWeight.normal,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
+import 'package:waleed_asro_shopping_getx_api/view/screens/auth/auth_button.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/auth/auth_text_form_field.dart';
+import 'package:waleed_asro_shopping_getx_api/view/widgets/auth/check_widget.dart';
+import 'package:waleed_asro_shopping_getx_api/view/widgets/auth/container_under.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -81,10 +84,26 @@ class SignUpScreen extends StatelessWidget {
                       obscureText: true,
                       validator: () {},
                     ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    CheckWidget(),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    AuthButton(
+                      text: "Sign Up",
+                      onPressed: () {},
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
+            ContainerUnder(
+              text: "Already Have an Account? ",
+              textType: "Log In",
+              onPressed: () {},
+            ),
           ],
         ),
       ),

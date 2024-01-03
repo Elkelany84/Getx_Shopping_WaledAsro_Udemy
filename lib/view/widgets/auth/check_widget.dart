@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
 class CheckWidget extends StatelessWidget {
@@ -17,7 +19,13 @@ class CheckWidget extends StatelessWidget {
               color: Colors.grey.shade200,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Image.asset("assets/images/check.png"),
+            child: Get.isDarkMode
+                ? Image.asset("assets/images/check.png")
+                : Icon(
+                    Icons.done,
+                    color: pinkClr,
+                    size: 30,
+                  ),
           ),
         ),
         SizedBox(
@@ -29,13 +37,13 @@ class CheckWidget extends StatelessWidget {
                 text: "I Accept ",
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
-                color: Colors.black,
+                color: Get.isDarkMode ? Colors.black : Colors.white,
                 underLine: TextDecoration.none),
             TextUtils(
                 text: "Terms & Conditions ",
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
-                color: Colors.black,
+                color: Get.isDarkMode ? Colors.black : Colors.white,
                 underLine: TextDecoration.none),
           ],
         )

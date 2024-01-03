@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/auth/auth_button.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/auth/auth_text_form_field.dart';
@@ -17,10 +18,10 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -38,7 +39,7 @@ class SignUpScreen extends StatelessWidget {
                             text: "SIGN",
                             fontSize: 28,
                             fontWeight: FontWeight.w500,
-                            color: mainColor,
+                            color: Get.isDarkMode ? mainColor : pinkClr,
                             underLine: TextDecoration.none),
                         SizedBox(
                           width: 3,
@@ -47,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
                             text: "UP",
                             fontSize: 28,
                             fontWeight: FontWeight.w500,
-                            color: Colors.black,
+                            color: Get.isDarkMode ? Colors.black : Colors.white,
                             underLine: TextDecoration.none),
                       ],
                     ),
@@ -55,7 +56,13 @@ class SignUpScreen extends StatelessWidget {
                       height: 50,
                     ),
                     AuthTextFormField(
-                      prefixIcon: Image.asset("assets/images/user.png"),
+                      prefixIcon: Get.isDarkMode
+                          ? Image.asset("assets/images/user.png")
+                          : Icon(
+                              Icons.person,
+                              color: pinkClr,
+                              size: 30,
+                            ),
                       suffixIcon: Text(""),
                       controller: nameControler,
                       hintText: "User Name",
@@ -66,7 +73,13 @@ class SignUpScreen extends StatelessWidget {
                       height: 20,
                     ),
                     AuthTextFormField(
-                      prefixIcon: Image.asset("assets/images/email.png"),
+                      prefixIcon: Get.isDarkMode
+                          ? Image.asset("assets/images/email.png")
+                          : Icon(
+                              Icons.email,
+                              color: pinkClr,
+                              size: 30,
+                            ),
                       suffixIcon: Text(""),
                       controller: emailControler,
                       hintText: "Email",
@@ -77,7 +90,13 @@ class SignUpScreen extends StatelessWidget {
                       height: 20,
                     ),
                     AuthTextFormField(
-                      prefixIcon: Image.asset("assets/images/lock.png"),
+                      prefixIcon: Get.isDarkMode
+                          ? Image.asset("assets/images/lock.png")
+                          : Icon(
+                              Icons.password,
+                              color: pinkClr,
+                              size: 30,
+                            ),
                       suffixIcon: Text(""),
                       controller: passwordControler,
                       hintText: "Password",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/auth_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/my_string.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/auth/auth_button.dart';
@@ -12,6 +13,8 @@ class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
   final formKey = GlobalKey<FormState>();
+  // final controller = Get.put(AuthController());
+  final controller = Get.find<AuthController>();
   final TextEditingController nameControler = TextEditingController();
   final TextEditingController emailControler = TextEditingController();
   final TextEditingController passwordControler = TextEditingController();
@@ -108,26 +111,41 @@ class SignUpScreen extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      AuthTextFormField(
-                        prefixIcon: Get.isDarkMode
-                            ? Image.asset("assets/images/lock.png")
-                            : Icon(
-                                Icons.password,
-                                color: pinkClr,
-                                size: 30,
-                              ),
-                        suffixIcon: Text(""),
-                        controller: passwordControler,
-                        hintText: "Password",
-                        obscureText: true,
-                        validator: (value) {
-                          if (value.toString().length < 6) {
-                            return "Password should be more than 5 characters";
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
+                      GetBuilder<AuthController>(builder: (_) {
+                        return AuthTextFormField(
+                          prefixIcon: Get.isDarkMode
+                              ? Image.asset("assets/images/lock.png")
+                              : Icon(
+                                  Icons.password,
+                                  color: pinkClr,
+                                  size: 30,
+                                ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.visibility();
+                            },
+                            icon: controller.isVisibility
+                                ? Icon(
+                                    Icons.visibility_off,
+                                    color: Colors.black,
+                                  )
+                                : Icon(
+                                    Icons.visibility,
+                                    color: Colors.black,
+                                  ),
+                          ),
+                          controller: passwordControler,
+                          hintText: "Password",
+                          obscureText: controller.isVisibility ? false : true,
+                          validator: (value) {
+                            if (value.toString().length < 6) {
+                              return "Password should be more than 5 characters";
+                            } else {
+                              return null;
+                            }
+                          },
+                        );
+                      }),
                       SizedBox(
                         height: 50,
                       ),

@@ -155,10 +155,26 @@ class SignUpScreen extends StatelessWidget {
                         SizedBox(
                           height: 50,
                         ),
-                        AuthButton(
-                          text: "Sign Up",
-                          onPressed: () {},
-                        ),
+                        GetBuilder<AuthController>(builder: (_) {
+                          return AuthButton(
+                            text: "Sign Up",
+                            onPressed: () async {
+                              if (controller.isChecked == false) {
+                                Get.snackbar("CheckBoox",
+                                    "Please Check Terms & Conditions",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    backgroundColor: Colors.green,
+                                    colorText: Colors.white);
+                              } else if (formKey.currentState!.validate()) {
+                                controller.signUpUsingFirebase(
+                                    email: emailControler.text.trim(),
+                                    password: passwordControler.text,
+                                    name: nameControler.text.trim());
+                                controller.isChecked = true;
+                              }
+                            },
+                          );
+                        })
                       ],
                     ),
                   ),

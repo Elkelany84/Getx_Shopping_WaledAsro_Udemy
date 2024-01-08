@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/auth_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/my_string.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/auth/auth_button.dart';
@@ -9,6 +10,7 @@ class ForgetpasswordScreen extends StatelessWidget {
   ForgetpasswordScreen({super.key});
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailControler = TextEditingController();
+  final controller = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -91,7 +93,14 @@ class ForgetpasswordScreen extends StatelessWidget {
                   SizedBox(
                     height: 50,
                   ),
-                  AuthButton(text: "Send", onPressed: () {})
+                  GetBuilder<AuthController>(builder: (_) {
+                    return AuthButton(
+                        text: "Send",
+                        onPressed: () async {
+                          if (formKey.currentState!.validate()) {}
+                          controller.resetPassword(emailControler.text.trim());
+                        });
+                  })
                 ],
               ),
             ),

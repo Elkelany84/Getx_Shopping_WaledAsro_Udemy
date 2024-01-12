@@ -15,14 +15,14 @@ class ForgetpasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+        backgroundColor: context.theme.colorScheme.background,
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
           title: Text(
             "Forget Password",
-            style: TextStyle(color: Get.isDarkMode ? mainColor : pinkClr),
+            style: TextStyle(color: Get.isDarkMode ? pinkClr : mainColor),
           ),
           leading: IconButton(
             onPressed: () {
@@ -30,7 +30,7 @@ class ForgetpasswordScreen extends StatelessWidget {
             },
             icon: Icon(
               Icons.arrow_back,
-              color: Get.isDarkMode ? Colors.black : Colors.white,
+              color: Get.isDarkMode ? Colors.white : Colors.black,
             ),
           ),
         ),

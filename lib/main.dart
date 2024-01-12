@@ -1,13 +1,17 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/theme_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   Platform.isAndroid
       ? await Firebase.initializeApp(
           options: const FirebaseOptions(
@@ -30,8 +34,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemesApp.light,
+      themeMode: ThemeController().themeDataGet,
       darkTheme: ThemesApp.dark,
-      initialRoute: AppRoutes.welcome,
+      initialRoute: FirebaseAuth.instance.currentUser != null ||
+              GetStorage().read<bool>('auth') == true
+          ? AppRoutes.mainScreen
+          : AppRoutes.welcome,
+      debugShowCheckedModeBanner: false,
       getPages: AppRoutes.routes,
     );
   }

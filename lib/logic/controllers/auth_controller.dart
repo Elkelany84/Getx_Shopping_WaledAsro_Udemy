@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
 
@@ -11,6 +12,10 @@ class AuthController extends GetxController {
   var displayUserPhoto = "";
   FirebaseAuth auth = FirebaseAuth.instance;
   var googleSignIn = GoogleSignIn();
+
+  var isSignedIn = false;
+
+  final GetStorage authBox = GetStorage();
   void visibility() {
     isVisibility = !isVisibility;
     update();
@@ -69,6 +74,8 @@ class AuthController extends GetxController {
       await auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) => {displayUserName = auth.currentUser!.displayName!});
+      isSignedIn = true;
+      authBox.write("auth", isSignedIn);
       update();
       Get.offNamed(Routes.mainScreen);
     } on FirebaseAuthException catch (error) {
@@ -102,6 +109,8 @@ class AuthController extends GetxController {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       displayUserName = googleSignIn.currentUser!.displayName!;
       displayUserPhoto = googleSignIn.currentUser!.photoUrl!;
+      isSignedIn = true;
+      authBox.write("auth", isSignedIn);
       update();
       Get.offNamed(Routes.mainScreen);
     } catch (error) {
@@ -139,5 +148,21 @@ class AuthController extends GetxController {
     }
   }
 
-  void signOutFromApp() {}
+  void signOutFromApp() async {
+    try {
+      await auth.signOut();
+      await googleSignIn.signOut();
+      displayUserName = "";
+      displayUserPhoto = "";
+      isSignedIn = false;
+      authBox.remove("auth");
+      update();
+      Get.offNamed(Routes.welcomeScreen);
+    } catch (error) {
+      Get.snackbar("Error!", error.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green,
+          colorText: Colors.white);
+    }
+  }
 }

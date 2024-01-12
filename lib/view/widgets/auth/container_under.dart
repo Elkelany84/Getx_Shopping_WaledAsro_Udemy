@@ -18,7 +18,7 @@ class ContainerUnder extends StatelessWidget {
       width: double.infinity,
       height: 100,
       decoration: BoxDecoration(
-        color: Get.isDarkMode ? mainColor : pinkClr,
+        color: Get.isDarkMode ? pinkClr : mainColor,
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
@@ -33,7 +33,12 @@ class ContainerUnder extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Colors.white,
               underLine: TextDecoration.none),
-          TextButton(onPressed: onPressed, child: Text(textType))
+          TextButton(
+              onPressed: onPressed,
+              child: Text(
+                textType,
+                style: TextStyle(decoration: TextDecoration.underline),
+              ))
         ],
       ),
     );

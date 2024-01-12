@@ -10,6 +10,7 @@ import 'package:waleed_asro_shopping_getx_api/view/screens/welcome_screen.dart';
 class AppRoutes {
   //initial route
   static const welcome = Routes.welcomeScreen;
+  static const mainScreen = Routes.mainScreen;
 
 //getPages
   static final routes = [

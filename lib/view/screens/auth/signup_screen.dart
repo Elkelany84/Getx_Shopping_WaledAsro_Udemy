@@ -24,10 +24,10 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+        backgroundColor: context.theme.colorScheme.background,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -47,7 +47,7 @@ class SignUpScreen extends StatelessWidget {
                                 text: "SIGN",
                                 fontSize: 28,
                                 fontWeight: FontWeight.w500,
-                                color: Get.isDarkMode ? mainColor : pinkClr,
+                                color: Get.isDarkMode ? pinkClr : mainColor,
                                 underLine: TextDecoration.none),
                             SizedBox(
                               width: 3,
@@ -57,8 +57,8 @@ class SignUpScreen extends StatelessWidget {
                                 fontSize: 28,
                                 fontWeight: FontWeight.w500,
                                 color: Get.isDarkMode
-                                    ? Colors.black
-                                    : Colors.white,
+                                    ? Colors.white
+                                    : Colors.black,
                                 underLine: TextDecoration.none),
                           ],
                         ),
@@ -70,7 +70,7 @@ class SignUpScreen extends StatelessWidget {
                               ? Image.asset("assets/images/user.png")
                               : Icon(
                                   Icons.person,
-                                  color: pinkClr,
+                                  color: Get.isDarkMode ? pinkClr : mainColor,
                                   size: 30,
                                 ),
                           suffixIcon: Text(""),
@@ -94,7 +94,7 @@ class SignUpScreen extends StatelessWidget {
                               ? Image.asset("assets/images/email.png")
                               : Icon(
                                   Icons.email,
-                                  color: pinkClr,
+                                  color: Get.isDarkMode ? pinkClr : mainColor,
                                   size: 30,
                                 ),
                           suffixIcon: Text(""),
@@ -119,7 +119,7 @@ class SignUpScreen extends StatelessWidget {
                                 ? Image.asset("assets/images/lock.png")
                                 : Icon(
                                     Icons.password,
-                                    color: pinkClr,
+                                    color: Get.isDarkMode ? pinkClr : mainColor,
                                     size: 30,
                                   ),
                             suffixIcon: IconButton(

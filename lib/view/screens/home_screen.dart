@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
+import 'package:waleed_asro_shopping_getx_api/view/widgets/home/card_items.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/home/search_text_from.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
@@ -51,6 +52,25 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: TextUtils(
+                    text: "Categories",
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Get.isDarkMode ? Colors.white : Colors.black,
+                    underLine: TextDecoration.none),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            CardItems()
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/bindings/auth_binding.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/bindings/main_bindings.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/bindings/product_binding.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/auth/forget_password.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/auth/login_screen.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/auth/signup_screen.dart';
@@ -36,7 +37,7 @@ class AppRoutes {
     GetPage(
         name: Routes.mainScreen,
         page: () => MainScreen(),
-        bindings: [AuthBinding(), MainBinding()]),
+        bindings: [AuthBinding(), MainBinding(), ProductBinding()]),
   ];
 }
 

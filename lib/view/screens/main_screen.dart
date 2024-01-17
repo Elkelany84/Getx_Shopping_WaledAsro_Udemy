@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/controllers/main_controller.dart';
+import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 
 class MainScreen extends StatelessWidget {
@@ -20,9 +21,7 @@ class MainScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.isDarkMode
-                      ? Get.changeThemeMode(ThemeMode.light)
-                      : Get.changeThemeMode(ThemeMode.dark);
+                  Get.toNamed(Routes.cartScreen);
                 },
                 icon: Image.asset("assets/images/shop.png"))
           ],

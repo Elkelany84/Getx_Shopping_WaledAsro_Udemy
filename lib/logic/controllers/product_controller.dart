@@ -19,7 +19,6 @@ class ProductController extends GetxController {
       favouritesList =
           storedFavourites.map((e) => ProductModels.fromJson(e)).toList().obs;
       print(favouritesList);
-      update();
     }
     getProducts();
     super.onInit();

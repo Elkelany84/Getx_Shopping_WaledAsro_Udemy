@@ -29,7 +29,7 @@ class CartProductCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
                   image: NetworkImage(
-                    "https://unsplash.com/photos/a-neon-sign-is-lit-up-in-a-dark-room-8TELKvO6Zco",
+                    "https://plus.unsplash.com/premium_photo-1674289121415-ec50cba976b6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8",
                   ),
                   fit: BoxFit.cover),
             ),

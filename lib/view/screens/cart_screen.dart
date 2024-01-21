@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/cart/cart_product_card.dart';
+import 'package:waleed_asro_shopping_getx_api/view/widgets/cart/cart_total.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -33,6 +34,10 @@ class CartScreen extends StatelessWidget {
                       );
                     },
                     itemCount: 1),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 30),
+                child: CartTotal(),
               )
             ],
           ),

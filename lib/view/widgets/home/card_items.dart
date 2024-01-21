@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/cart_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/controllers/product_controller.dart';
+import 'package:waleed_asro_shopping_getx_api/model/product_models.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
 class CardItems extends StatelessWidget {
   CardItems({super.key});
   final controller = Get.put(ProductController());
+  final cartController = Get.find<CartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,8 @@ class CardItems extends StatelessWidget {
                     image: controller.productList[index].image,
                     price: controller.productList[index].price,
                     rating: controller.productList[index].rating.rate,
-                    productId: controller.productList[index].id);
+                    productId: controller.productList[index].id,
+                    productModels: controller.productList[index]);
               }),
         );
       }
@@ -41,7 +45,8 @@ class CardItems extends StatelessWidget {
       {required String image,
       required double price,
       required double rating,
-      required int productId}) {
+      required int productId,
+      required ProductModels productModels}) {
     return Padding(
       padding: EdgeInsets.all(5),
       child: Container(
@@ -76,9 +81,11 @@ class CardItems extends StatelessWidget {
                             ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        cartController.addProductToCart(productModels);
+                      },
                       icon: Icon(
-                        Icons.add,
+                        Icons.shopping_cart,
                         color: Colors.black,
                       ),
                     ),

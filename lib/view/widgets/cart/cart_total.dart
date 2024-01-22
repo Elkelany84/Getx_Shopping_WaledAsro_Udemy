@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/cart_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
 class CartTotal extends StatelessWidget {
-  const CartTotal({super.key});
+  CartTotal({super.key});
+
+  final controller = Get.find<CartController>();
 
   @override
   Widget build(BuildContext context) {
+    //You Can add the whole container to obx
     return Container(
       padding: EdgeInsets.all(25),
       child: Row(
@@ -25,7 +29,7 @@ class CartTotal extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                "\$ 680.22",
+                "\$ ${controller.total}",
                 style: TextStyle(
                     color: Get.isDarkMode ? Colors.white : Colors.black,
                     fontSize: 20,

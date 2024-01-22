@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/model/product_models.dart';
+import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
+import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 
 class CartController extends GetxController {
   var productsMap = {}.obs;
@@ -43,7 +46,32 @@ class CartController extends GetxController {
   }
 
   void clearAllProucts() {
-    productsMap.clear();
+    Get.defaultDialog(
+      title: "Clear Shopping Basket!",
+      titleStyle: TextStyle(
+          color: Get.isDarkMode ? Colors.white : Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.bold),
+      middleText: "Are you sure you want to Clear The Basket?",
+      middleTextStyle: TextStyle(
+          color: Get.isDarkMode ? Colors.white : Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.bold),
+      backgroundColor: Colors.grey,
+      cancelTextColor: Get.isDarkMode ? Colors.white : Colors.black,
+      radius: 10,
+      textCancel: "No",
+      textConfirm: "Yes",
+      confirmTextColor: Get.isDarkMode ? Colors.white : Colors.black,
+      onCancel: () {
+        Get.toNamed(Routes.cartScreen);
+      },
+      onConfirm: () {
+        productsMap.clear();
+        Get.back();
+      },
+      buttonColor: Get.isDarkMode ? pinkClr : mainColor,
+    );
   }
 
   get productSubTotal =>

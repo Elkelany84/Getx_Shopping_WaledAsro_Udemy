@@ -38,6 +38,10 @@ class CartController extends GetxController {
     } else {
       productsMap[productModels] -= 1;
     }
+    // Get.snackbar("Error!", "${productsMap[productModels]}",
+    //     snackPosition: SnackPosition.BOTTOM,
+    //     backgroundColor: Colors.green,
+    //     colorText: Colors.white);
   }
 
   //the red basket button
@@ -82,4 +86,15 @@ class CartController extends GetxController {
       .toList()
       .reduce((value, element) => value + element)
       .toStringAsFixed(2);
+
+  int quantity() {
+    if (productsMap.isEmpty) {
+      return 0;
+    } else {
+      return productsMap.entries
+          .map((e) => e.value)
+          .toList()
+          .reduce((value, element) => value + element);
+    }
+  }
 }

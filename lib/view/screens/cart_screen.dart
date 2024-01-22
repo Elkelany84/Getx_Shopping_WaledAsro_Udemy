@@ -36,7 +36,7 @@ class CartScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 600,
+                      height: 650,
                       child: ListView.separated(
                           itemBuilder: (context, index) {
                             return CartProductCard(
@@ -56,7 +56,7 @@ class CartScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 30),
                       child: CartTotal(),
-                    )
+                    ),
                   ],
                 ),
               );

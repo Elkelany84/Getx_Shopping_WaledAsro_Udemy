@@ -37,7 +37,9 @@ class CardItems extends StatelessWidget {
                     productId: controller.productList[index].id,
                     productModels: controller.productList[index],
                     onTap: () {
-                      Get.to(() => ProductDetailsScreen());
+                      Get.to(() => ProductDetailsScreen(
+                            productModels: controller.productList[index],
+                          ));
                     });
               }),
         );

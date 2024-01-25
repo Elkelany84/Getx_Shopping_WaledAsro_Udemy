@@ -115,7 +115,7 @@ class ClothesInfo extends StatelessWidget {
                 fontSize: 16,
                 height: 1.5,
                 color: Get.isDarkMode ? Colors.white : Colors.black),
-          )
+          ),
         ],
       ),
     );

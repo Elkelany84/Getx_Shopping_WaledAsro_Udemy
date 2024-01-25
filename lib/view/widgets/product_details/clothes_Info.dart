@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:readmore/readmore.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/controllers/product_controller.dart';
+import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
 class ClothesInfo extends StatelessWidget {
@@ -9,10 +11,12 @@ class ClothesInfo extends StatelessWidget {
       {super.key,
       required this.title,
       required this.productId,
-      required this.rate});
+      required this.rate,
+      required this.description});
   final String title;
   final int productId;
   final double rate;
+  final String description;
   // late double _rating;
   ProductController controller = Get.find<ProductController>();
 
@@ -91,6 +95,27 @@ class ClothesInfo extends StatelessWidget {
                   }),
             ],
           ),
+          SizedBox(
+            height: 20,
+          ),
+          ReadMoreText(
+            description,
+            trimLines: 3,
+            textAlign: TextAlign.justify,
+            trimCollapsedText: "Show More",
+            trimExpandedText: "Show Less",
+            lessStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Get.isDarkMode ? pinkClr : mainColor),
+            moreStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Get.isDarkMode ? pinkClr : mainColor),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                height: 1.5,
+                color: Get.isDarkMode ? Colors.white : Colors.black),
+          )
         ],
       ),
     );

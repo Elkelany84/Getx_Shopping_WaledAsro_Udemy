@@ -135,7 +135,7 @@ class _ImageSlidersState extends State<ImageSliders> {
                 ),
                 Obx(() {
                   return badges.Badge(
-                    position: badges.BadgePosition.topEnd(top: -10, end: -10),
+                    position: badges.BadgePosition.topEnd(top: -14, end: -12),
 
                     badgeAnimation: badges.BadgeAnimation.slide(
                       disappearanceFadeAnimationDuration:

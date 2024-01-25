@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/model/product_models.dart';
+import 'package:waleed_asro_shopping_getx_api/view/widgets/product_details/clothes_Info.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/product_details/image_slider.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -19,7 +20,12 @@ class ProductDetailsScreen extends StatelessWidget {
               ImageSliders(
                 imageUrl: productModels.image,
               ),
-              // ClothesInfo(), SizeList(), AddCart()
+              ClothesInfo(
+                title: productModels.title,
+                productId: productModels.id,
+                rate: productModels.rating.rate,
+              ),
+              // SizeList(), AddCart()
             ],
           ),
         ),

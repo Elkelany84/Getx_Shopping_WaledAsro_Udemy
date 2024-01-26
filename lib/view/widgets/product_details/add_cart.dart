@@ -38,37 +38,36 @@ class AddCart extends StatelessWidget {
             ],
           ),
           SizedBox(
-            width: 20,
+            width: 50,
           ),
           SizedBox(
             height: 60,
-            child: Expanded(
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        backgroundColor: Get.isDarkMode ? pinkClr : mainColor),
-                    onPressed: () {
-                      controller.addProductToCart(productModels);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Add To Cart',
-                          style: TextStyle(fontSize: 20, color: Colors.black),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          Icons.shopping_cart_outlined,
-                          size: 30,
-                        )
-                      ],
-                    ))),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    backgroundColor: Get.isDarkMode ? pinkClr : mainColor),
+                onPressed: () {
+                  controller.addProductToCart(productModels);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Add To Cart',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 30,
+                    )
+                  ],
+                )),
           )
         ],
       ),

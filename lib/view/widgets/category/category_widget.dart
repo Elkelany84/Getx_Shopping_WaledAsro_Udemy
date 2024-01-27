@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/controllers/category_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
+import 'package:waleed_asro_shopping_getx_api/view/widgets/category/category_items.dart';
 
 class CategoryWidget extends StatelessWidget {
   CategoryWidget({super.key});
@@ -23,7 +24,10 @@ class CategoryWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    // Get.to(() => CategoryItems());
+                    controller.getCategoryIndex(index);
+                    Get.to(() => CategoryItems(
+                          categoryTitle: controller.categoryNameList[index],
+                        ));
                   },
                   child: Container(
                     width: double.infinity,

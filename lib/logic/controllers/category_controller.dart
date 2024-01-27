@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/model/product_models.dart';
 import 'package:waleed_asro_shopping_getx_api/services/category_services.dart';
 
 class CategoryController extends GetxController {
   var categoryNameList = <String>[].obs;
   var isCategoryLoading = false.obs;
-
+  var isAllCategory = false.obs;
+  var categoryList = <ProductModels>[].obs;
   List<String> imageCategory = [
     "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
     "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
@@ -18,7 +20,7 @@ class CategoryController extends GetxController {
     super.onInit();
   }
 
-  getCategories() async {
+  void getCategories() async {
     var categoryName = await CategoryServices.getCategories();
     try {
       isCategoryLoading(true);
@@ -27,6 +29,20 @@ class CategoryController extends GetxController {
       }
     } finally {
       isCategoryLoading(false);
+    }
+  }
+
+  getAllCategories(String nameCategory) async {
+    isAllCategory(true);
+    categoryList.value = await AllCategoryServices.getAllCategory(nameCategory);
+
+    isAllCategory(false);
+  }
+
+  getCategoryIndex(int index) async {
+    var categoryAllName = await getAllCategories(categoryNameList[index]);
+    if (categoryAllName != null) {
+      categoryList.value = categoryAllName;
     }
   }
 }

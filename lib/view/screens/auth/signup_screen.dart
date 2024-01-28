@@ -160,7 +160,7 @@ class SignUpScreen extends StatelessWidget {
                             text: "Sign Up",
                             onPressed: () async {
                               if (controller.isChecked == false) {
-                                Get.snackbar("CheckBoox",
+                                Get.snackbar("CheckBox",
                                     "Please Check Terms & Conditions",
                                     snackPosition: SnackPosition.BOTTOM,
                                     backgroundColor: Colors.green,

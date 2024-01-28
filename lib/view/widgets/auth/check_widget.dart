@@ -30,7 +30,7 @@ class CheckWidget extends StatelessWidget {
                         ? Image.asset("assets/images/check.png")
                         : Icon(
                             Icons.done,
-                            color: pinkClr,
+                            color: Get.isDarkMode ? pinkClr : mainColor,
                           )
                     : Container()
                 // : Icon(
@@ -49,13 +49,13 @@ class CheckWidget extends StatelessWidget {
                   text: "I Accept ",
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
-                  color: Get.isDarkMode ? Colors.black : Colors.white,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   underLine: TextDecoration.none),
               TextUtils(
                   text: "Terms & Conditions ",
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
-                  color: Get.isDarkMode ? Colors.black : Colors.white,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   underLine: TextDecoration.none),
             ],
           )

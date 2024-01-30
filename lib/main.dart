@@ -5,8 +5,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:waleed_asro_shopping_getx_api/language/localization.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/controllers/theme_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
+import 'package:waleed_asro_shopping_getx_api/utils/my_string.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 
 void main() async {
@@ -32,6 +34,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      locale: Locale(GetStorage().read<String>("lang").toString()),
+      fallbackLocale: Locale(ene),
+      translations: LocalizationApp(),
       title: 'Flutter Demo',
       theme: ThemesApp.light,
       themeMode: ThemeController().themeDataGet,

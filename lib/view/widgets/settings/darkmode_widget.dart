@@ -18,7 +18,7 @@ class DarkModeWidget extends StatelessWidget {
         children: [
           buildIconWidget(),
           Switch(
-            // activeTrackColor: Get.isDarkMode ? pinkClr : mainColor,
+            activeTrackColor: Get.isDarkMode ? pinkClr : mainColor,
             activeColor: Get.isDarkMode ? pinkClr : mainColor,
             // inactiveThumbColor: Get.isDarkMode ? Colors.white : Colors.black,
             value: controller.switchValue.value,
@@ -50,7 +50,7 @@ class DarkModeWidget extends StatelessWidget {
               width: 20,
             ),
             TextUtils(
-                text: "DarkMode",
+                text: "DarkMode".tr,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: Get.isDarkMode ? Colors.white : Colors.black,

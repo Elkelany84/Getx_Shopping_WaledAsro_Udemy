@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/controllers/cart_controller.dart';
+import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
@@ -51,7 +52,9 @@ class CartTotal extends StatelessWidget {
                     ),
                     elevation: 0,
                     backgroundColor: Get.isDarkMode ? pinkClr : mainColor),
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.paymentScreen);
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

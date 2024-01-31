@@ -7,6 +7,7 @@ import 'package:waleed_asro_shopping_getx_api/view/screens/auth/login_screen.dar
 import 'package:waleed_asro_shopping_getx_api/view/screens/auth/signup_screen.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/cart_screen.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/main_screen.dart';
+import 'package:waleed_asro_shopping_getx_api/view/screens/payment_screen.dart';
 import 'package:waleed_asro_shopping_getx_api/view/screens/welcome_screen.dart';
 
 class AppRoutes {
@@ -42,7 +43,18 @@ class AppRoutes {
     GetPage(
       name: Routes.cartScreen,
       page: () => CartScreen(),
-      bindings: [AuthBinding(), ProductBinding()],
+      bindings: [
+        AuthBinding(),
+        ProductBinding(),
+      ],
+    ),
+    GetPage(
+      name: Routes.paymentScreen,
+      page: () => PaymentScreen(),
+      bindings: [
+        AuthBinding(),
+        ProductBinding(),MainBinding(),
+      ],
     ),
   ];
 }
@@ -54,4 +66,5 @@ class Routes {
   static const forgetPasswordScreen = "/forgetpasswordScreen";
   static const mainScreen = "/mainScreen";
   static const cartScreen = "/cartScreen";
+  static const paymentScreen = "/paymentScreen";
 }

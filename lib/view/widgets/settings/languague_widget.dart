@@ -60,7 +60,7 @@ class LanguageWidget extends StatelessWidget {
                 ),
                 onChanged: (value) {
                   controller.changeLanguage(value!);
-                  Get.updateLocale(Locale(value!));
+                  Get.updateLocale(Locale(value));
                 },
                 items: [
                   DropdownMenuItem(

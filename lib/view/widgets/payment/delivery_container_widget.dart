@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/payment_controller.dart';
+import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
+import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
 class DeliveryContainerWidget extends StatefulWidget {
@@ -10,6 +14,8 @@ class DeliveryContainerWidget extends StatefulWidget {
 }
 
 class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
+  final TextEditingController phoneController = TextEditingController();
+  final PaymentController controller = Get.find<PaymentController>();
   bool changeColors = false;
   int radioContainerIndes = 1;
   @override
@@ -21,6 +27,7 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
             name: "Elkelnay",
             phone: "010",
             title: "Elkelany Store",
+            icon: Container(),
             color: changeColors ? Colors.white : Colors.grey.shade300,
             value: 1,
             onChanged: (value) {
@@ -32,19 +39,104 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
         SizedBox(
           height: 10,
         ),
-        buildRadioContainer(
-            address: "29 Elfardous st",
-            name: "Elkelnay",
-            phone: "012",
-            title: "Delivery",
-            color: changeColors ? Colors.grey.shade300 : Colors.white,
-            value: 2,
-            onChanged: (value) {
-              setState(() {
-                changeColors = !changeColors;
-                radioContainerIndes = value!;
+        Obx(() {
+          return buildRadioContainer(
+              address: "29 Elfardous st",
+              name: "Elkelnay",
+              phone: controller.phoneNumber.value,
+              title: "Delivery",
+              icon: InkWell(
+                onTap: () {
+                  Get.defaultDialog(
+                    title: "Enter Your Phone Number",
+                    titleStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                    backgroundColor: Colors.white,
+                    radius: 10,
+                    textCancel: "Cancel",
+                    cancelTextColor: Colors.black,
+                    textConfirm: "Save",
+                    confirmTextColor: Colors.black,
+                    onCancel: () {
+                      Get.toNamed(Routes.paymentScreen);
+                    },
+                    onConfirm: () {
+                      Get.back();
+                      controller.phoneNumber.value = phoneController.text;
+                    },
+                    buttonColor: Get.isDarkMode ? pinkClr : mainColor,
+                    content: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: TextField(
+                        controller: phoneController,
+                        maxLength: 11,
+                        onSubmitted: (value) {
+                          phoneController.text = value;
+                        },
+                        cursorColor: Colors.black,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          fillColor: Get.isDarkMode
+                              ? pinkClr.withOpacity(0.1)
+                              : mainColor.withOpacity(0.2),
+                          focusColor: Colors.red,
+                          prefixIcon: Icon(
+                            Icons.phone,
+                            color: Get.isDarkMode ? pinkClr : mainColor,
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              phoneController.clear();
+                            },
+                            icon: Icon(
+                              Icons.close,
+                              color: Colors.black,
+                            ),
+                          ),
+                          hintText: "Phone Number",
+                          hintStyle: TextStyle(
+                              color: Colors.black45,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: Icon(
+                  Icons.contact_phone,
+                  size: 20,
+                  color: Get.isDarkMode ? pinkClr : mainColor,
+                ),
+              ),
+              color: changeColors ? Colors.grey.shade300 : Colors.white,
+              value: 2,
+              onChanged: (value) {
+                setState(() {
+                  changeColors = !changeColors;
+                  radioContainerIndes = value!;
+                });
               });
-            })
+        })
       ],
     );
   }
@@ -57,6 +149,7 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
     required String title,
     required String phone,
     required String address,
+    required Widget icon,
   }) {
     return Container(
       height: 120,
@@ -108,12 +201,23 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
                 SizedBox(
                   height: 5,
                 ),
-                TextUtils(
-                    text: phone,
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black,
-                    underLine: TextDecoration.none),
+                Row(
+                  children: [
+                    Text("🇪🇬+02 "),
+                    TextUtils(
+                        text: phone,
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black,
+                        underLine: TextDecoration.none),
+                    SizedBox(
+                      width: 120,
+                    ),
+                    SizedBox(
+                      child: icon,
+                    )
+                  ],
+                ),
                 SizedBox(
                   height: 5,
                 ),

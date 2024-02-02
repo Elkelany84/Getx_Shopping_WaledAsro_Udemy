@@ -25,7 +25,7 @@ class PaymentController extends GetxController {
     Placemark place = placemarks[0];
     address.value = "${place.country} ${place.street} ";
 
-    print(place);
+    // print(place);
   }
 
   Future<Position> _determinePosition() async {

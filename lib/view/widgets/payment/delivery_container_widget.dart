@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/auth_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/logic/controllers/payment_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/routes/routes.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
@@ -16,6 +17,7 @@ class DeliveryContainerWidget extends StatefulWidget {
 class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
   final TextEditingController phoneController = TextEditingController();
   final PaymentController controller = Get.find<PaymentController>();
+  final AuthController authController = Get.find<AuthController>();
   bool changeColors = false;
   int radioContainerIndes = 1;
   @override
@@ -41,8 +43,8 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
         ),
         Obx(() {
           return buildRadioContainer(
-              address: "29 Elfardous st",
-              name: "Elkelnay",
+              address: controller.address.value,
+              name: authController.displayUserName.value,
               phone: controller.phoneNumber.value,
               title: "Delivery",
               icon: InkWell(
@@ -135,8 +137,9 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
                   changeColors = !changeColors;
                   radioContainerIndes = value!;
                 });
+                controller.updatePosition();
               });
-        })
+        }),
       ],
     );
   }
@@ -221,12 +224,15 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
                 SizedBox(
                   height: 5,
                 ),
-                TextUtils(
-                    text: address,
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black,
-                    underLine: TextDecoration.none),
+                Text(
+                  address,
+                  // maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black),
+                ),
               ],
             ),
           ),

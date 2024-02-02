@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:waleed_asro_shopping_getx_api/logic/controllers/cart_controller.dart';
 import 'package:waleed_asro_shopping_getx_api/utils/theme.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/payment/delivery_container_widget.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/payment/payment_method_widget.dart';
 import 'package:waleed_asro_shopping_getx_api/view/widgets/text_utils.dart';
 
 class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({super.key});
+  PaymentScreen({super.key});
+  final controller = Get.find<CartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class PaymentScreen extends StatelessWidget {
               //Total Button
               Center(
                 child: TextUtils(
-                    text: "Total: 200 \$",
+                    text: "${controller.total}  \$",
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Get.isDarkMode ? Colors.white : Colors.black,

@@ -8,6 +8,7 @@ Shopping App with API and Getx.
 
 ![signup](https://github.com/Elkelany84/Getx_Shopping_WaledAsro_Udemy/assets/74449997/5a390d4e-3eb5-4e8a-8fa1-8e4aa7a1ace7)
 ![signin](https://github.com/Elkelany84/Getx_Shopping_WaledAsro_Udemy/assets/74449997/7a65bc38-079d-4488-a24d-3faca893419a)
+![home](https://github.com/Elkelany84/Getx_Shopping_WaledAsro_Udemy/assets/74449997/ce9edd72-e1c0-40c1-818b-e6f444a4149e)
 
 
 
